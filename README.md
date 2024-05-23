@@ -3,11 +3,11 @@ Blockchain based Excisemanagement System
 ---------------
 
 Scenario Description
-Human Error: During the manufacturing process, the wrong brand code (x2y) was selected instead of the correct one (xyz) for a batch of 1000 bottles.
+**Human Error:** During the manufacturing process, the wrong brand code (x2y) was selected instead of the correct one (xyz) for a batch of 1000 bottles.
 Request: An approval letter from the commissioner authorizes the correction of the brand code in the database.
 
 Handling the Scenario in Hyperledger Fabric
-Recording the Error and Approval:
+**Recording the Error and Approval:**
 
 First, we record the error and the corresponding approval from the commissioner on the blockchain. This ensures that there is an immutable record of the mistake and the authorization to correct it.
 Implementing Correction Mechanism:
@@ -17,7 +17,7 @@ Creating an Audit Trail:
 
 Maintain a detailed audit trail of the correction process, including the original data, the correction request, and the approval.
 Implementation Steps
-Define the Chaincode for Error Correction:
+**Define the Chaincode for Error Correction:**
 This chaincode will handle the recording of errors, requests for correction, and the actual correction process upon approval.
 Example Chaincode:
 
@@ -178,16 +178,16 @@ func main() {
 
 -----
 Steps to Implement
-Record the Error:
+**Record the Error:**
 
 When the error is discovered, the RecordError function is called to update the batch record with error details.
-Request Correction:
+**Request Correction:**
 
 The RequestCorrection function records the request for correction along with the approval from the commissioner.
 Approval and Correction:
 
 After verifying the approval, the CorrectError function is called to update the incorrect brand code with the correct one.
-Audit Trail:
+**Audit Trail:**
 
 All steps (recording the error, requesting correction, and performing the correction) are logged on the blockchain, creating an immutable audit trail.
 Advantages of Using Hyperledger Fabric
