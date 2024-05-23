@@ -1,28 +1,3 @@
-# IEMS2.0
-Blockchain based Excisemanagement System
----------------
-
-Scenario Description
-Human Error: During the manufacturing process, the wrong brand code (x2y) was selected instead of the correct one (xyz) for a batch of 1000 bottles.
-Request: An approval letter from the commissioner authorizes the correction of the brand code in the database.
-
-Handling the Scenario in Hyperledger Fabric
-Recording the Error and Approval:
-
-First, we record the error and the corresponding approval from the commissioner on the blockchain. This ensures that there is an immutable record of the mistake and the authorization to correct it.
-Implementing Correction Mechanism:
-
-Develop a chaincode function to handle corrections. This function should only be executable by authorized personnel (e.g., with multi-signature approval or role-based access control).
-Creating an Audit Trail:
-
-Maintain a detailed audit trail of the correction process, including the original data, the correction request, and the approval.
-Implementation Steps
-Define the Chaincode for Error Correction:
-This chaincode will handle the recording of errors, requests for correction, and the actual correction process upon approval.
-Example Chaincode:
-
-go
-
 package main
 
 import (
@@ -175,24 +150,3 @@ func main() {
         fmt.Printf("Error starting alcohol manufacturing chaincode: %s", err.Error())
     }
 }
-
------
-Steps to Implement
-Record the Error:
-
-When the error is discovered, the RecordError function is called to update the batch record with error details.
-Request Correction:
-
-The RequestCorrection function records the request for correction along with the approval from the commissioner.
-Approval and Correction:
-
-After verifying the approval, the CorrectError function is called to update the incorrect brand code with the correct one.
-Audit Trail:
-
-All steps (recording the error, requesting correction, and performing the correction) are logged on the blockchain, creating an immutable audit trail.
-Advantages of Using Hyperledger Fabric
-Immutability: Even though corrections can be made, all actions are logged immutably on the blockchain, preserving a history of changes.
-Permissioned Access: Only authorized individuals can request and approve corrections, ensuring security and compliance.
-Traceability: Detailed audit trails help in maintaining transparency and accountability.
-Automated Workflows: Smart contracts automate the validation and correction processes, reducing the risk of further human error.
-This approach ensures that the integrity of the blockchain is maintained while allowing for necessary corrections under controlled and authorized conditions.
